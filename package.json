@@ -1,0 +1,19 @@
+{
+  "name": "desafio-ngpd",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "author": "Maria Eduarda Chaves de Albuquerque",
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.3",
+    "express": "4.17.1",
+    "freewall": "^1.0.8",
+    "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
