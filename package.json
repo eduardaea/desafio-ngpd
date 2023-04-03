@@ -10,7 +10,6 @@
   "dependencies": {
     "@notionhq/client": "^2.2.3",
     "express": "4.17.1",
-    "freewall": "^1.0.8",
     "morgan": "1.10.0"
   },
   "devDependencies": {

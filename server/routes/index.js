@@ -13,10 +13,16 @@ router.get('/lista', async (req, res) => {
     const result = await notion.databases.query({
         database_id: "ec4b3aa93e4248c9ab1b1341b99e2483",
     });
-    console.log(result)
     const arrayImages = []
+   
     for(let img of result.results){
-      arrayImages.push(img.url)
+      const tableLine = {
+        url: img.properties.url.rich_text[0].text.content,
+        curiosidade: img.properties.Curiosidade.rich_text[0].text.content,
+        animal: img.properties.Animal.title[0].text.content
+      }
+
+      arrayImages.push(tableLine)
     }
     res.send(arrayImages);
 });
