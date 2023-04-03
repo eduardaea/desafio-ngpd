@@ -1,7 +1,6 @@
 const express = require('express');
 const { Client } = require("@notionhq/client")
 
-// Initializing a client
 const notion = new Client({
   auth: 'secret_05MNjbI3sANylqajxNydr1rjVcZ2ZgDdwkKfC1bpWHz',
 })

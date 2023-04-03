@@ -2,6 +2,12 @@ let animalsArray = []
 
 $(document).ready(function() {
     getImages();
+	$(document).on('click','.img',function() {
+		var index = $(this).attr('data-index');
+		$('#animalName').text(animalsArray[index].animal)
+		$('#curiosity').text(animalsArray[index].curiosidade)
+		$('#animalModal').modal('show')
+	});
 });
 
 function getImages() {
@@ -10,19 +16,21 @@ function getImages() {
         url: '/api/lista'
     }).then((response) => {
         animalsArray = response;
-        console.log(animalsArray);
-        getFreewall();
+		createImages();
+        initFreewall();
     });
 }
 
-function getFreewall() {
-    for (let [index, img] of animalsArray.entries()) {
+function createImages() {
+	for (let [index, img] of animalsArray.entries()) {
         $('#freewall').append(`<div class="brick">
 			<img class="img" data-index="${index}" src="${img.url}" class="imagem">
 		</div>`);
     }
+}
 
-    var wall = new Freewall("#freewall");
+function initFreewall() {
+    const wall = new Freewall("#freewall");
     wall.reset({
         selector: '.brick',
         animate: true,
@@ -37,16 +45,3 @@ function getFreewall() {
         wall.fitWidth();
     });
 }
-
-$(document).ready(function() {
-	$(document).on('click','.img',function() {
-		var index = $(this).attr('data-index');
-		console.log(index);
-		$('#animalName').text(animalsArray[index].animal)
-		$('#curiosity').text(animalsArray[index].curiosidade)
-		$('#animalModal').modal('show')
-	});
-});
-
-
-
